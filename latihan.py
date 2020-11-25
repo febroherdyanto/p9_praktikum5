@@ -3,7 +3,6 @@ print("NIM : 312010043")
 print("Kelas : TI.20.B.1")
 print("=======================")
 print()
-print()
 
 kontak = {"Ari": "085215565501", "Dina": "08788767778"}
 print("Nama | Nomor Telepon")

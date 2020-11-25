@@ -15,45 +15,54 @@ print()
 # • Commit dan push repository ke github.
 # Data untuk menambahkan : NIM, Nama, NIlai UTS, NIlai UAS, NIlai Tugas
 
-daftar = {}
+daftar = []
+x = PrettyTable()
 
+while True:
+    print("[ (L)ihat , (T)ambah, (U)bah, (C)ari, (K)eluar ]")
+    tanya = input("Masukkan Pilihan : ")
+    if tanya == "L":
+        print("==== Daftar Nilai ====")
+        i = 0
+        for data in daftar:
+            i += 1
+            x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
+            x.add_row([i, data["nim"], data["nama"], data["tugas"], data["uts"], data["uas"], data["akhir"]])
+        print(x)
+    elif tanya == "T":
+        print("Tambah Data ")
+        nim_v = input("NIM : ")
+        nama_v = input("Nama Lengkap : ")
+        uts_v = input("Nilai UTS : ")
+        uas_v = input("Nilai UAS : ")
+        tugas_v = input("Nilai Tugas : ")
+        akhir_v = 0.3 * float(tugas_v) + 0.35 * float(uts_v) + 0.35 * float(uas_v)
+        daftar.append({"nim": nim_v, "nama": nama_v, "tugas": tugas_v, "uts": uts_v, "uas": uas_v, "akhir": akhir_v})
+        print()
+        print("==== Daftar Nilai ====")
+        i = 0
+        for data in daftar:
+            i += 1
+            x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
+            x.add_row([i, data["nim"], data["nama"], data["tugas"], data["uts"], data["uas"], data["akhir"]])
+        print(x)
+        print(daftar)
+    elif tanya == "U":
+        print("EDIT FILE")
+        print("Data siapa yang akan diubah ?")
+        siapa = input("Masukkan NIM Mahasiswa yang akan diubah : ")
 
-print("[ (L)ihat , (T)ambah, (U)bah, (C)ari, (K)eluar ]")
-tanya = input("Masukkan Pilihan : ")
-if tanya == "T":
-    print("Tambah Data ")
-    nim_v = input("NIM : ")
-    nama_v = input("Nama Lengkap : ")
-    uts_v = input("Nilai UTS : ")
-    uas_v = input("Nilai UAS : ")
-    tugas_v = input("Nilai Tugas : ")
-    akhir_v = 0.3 * float(tugas_v) + 0.35 * float(uts_v) + 0.35 * float(uas_v)
-    nim_k = nim_v[0:20]
-    nama_k = nama_v[0:100]
-    tugas_k = tugas_v[0:5]
-    uts_k = uts_v[0:5]
-    uas_k = uas_v[0:5]
-    akhir_k = 0.3 * float(tugas_v) + 0.35 * float(uts_v) + 0.35 * float(uas_v)
+        print("Data apa yang akan diubah ? : ")
+        mhs = input(" 1. Nama \n 2. Nilai Tugas \n 3. Nilai UTS \n 4. Nilai UAS\n Pilih dengan angka (1/2/3/4) : ")
+        if mhs == "1":
+            ubahnama = input("Silahkan masukan nama yang benar : ")
+            for data in daftar:
+                data[mhs] = ubahnama
+                print(data.items())
+        else:
+            print("Data kosong")
 
-    daftar = (nim_k, nama_k, tugas_k, uts_k, uas_k, akhir_k)
-    print(daftar)
-
-    print()
-    print("==== Daftar Nilai ====")
-    x = PrettyTable()
-    i = 1
-    # for data in range(daftar):
-    x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
-    x.add_row([i, daftar[0], daftar[1], daftar[2], daftar[3], daftar[4], daftar[5]])
-    # x.add_row(["no.", data[0], data[1], data[2], data[3], data[4], data[5]])
-    print(x)
-elif tanya == "L":
-    print("Menampilkan Semua Hasil")
-elif tanya == "U":
-    print("EDIT FILE")
-elif tanya == "C":
-    print("MENCARI RECORD")
-elif tanya == "K":
-    print("KELUAR")
-else:
-    print("PILIHAN ANDA SALAH")
+    elif tanya == "H":
+        print("HAPUS DATA")
+    else:
+        print("ANDA MEMILIH PILIHAN YANG SALAH")
