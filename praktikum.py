@@ -5,30 +5,25 @@ print("NIM : 312010043")
 print("Kelas : TI.20.B.1")
 print("=======================")
 print()
-# Buat program sederhana yang akan menampilkan daftar nilai
-# mahasiswa, dengan ketentuan
-# • Program dibuat dengan menggunakan Dictionary
-# • Tampilkan menu pilihan: (L)ihat, (T)ambah Data, (U)bah Data, (H)apus Data, (C)ari Data, (K)eluar
-# • Nilai Akhir diambil dari perhitungan 3 komponen nilai (tugas: 30%,
-# uts: 35%, uas: 35%)
-# • Buat flowchart dan penjelasan programnya pada README.md.
-# • Commit dan push repository ke github.
-# Data untuk menambahkan : NIM, Nama, NIlai UTS, NIlai UAS, NIlai Tugas
 
 daftar = []
 x = PrettyTable()
 
 while True:
-    print("[ (L)ihat , (T)ambah, (U)bah, (C)ari, (K)eluar ]")
+    print("[ (L)ihat , (T)ambah, (U)bah, (H)apus, (C)ari, (K)eluar ]")
     tanya = input("Masukkan Pilihan : ")
     if tanya == "L":
-        print("==== Daftar Nilai ====")
-        i = 0
-        for data in daftar:
-            i += 1
+        print("==== Daftar Nilai Mahasiswa ====")
+        no = 0
+        no += 1
+        x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
+        if not daftar:
             x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
-            x.add_row([i, data["nim"], data["nama"], data["tugas"], data["uts"], data["uas"], data["akhir"]])
-        print(x)
+            print(" D A T A  K O S O N G")
+        else:
+            for data in daftar:
+                x.add_row([no, data["nim"], data["nama"], data["tugas"], data["uts"], data["uas"], data["akhir"]])
+            print(x)
     elif tanya == "T":
         print("Tambah Data ")
         nim_v = input("NIM : ")
@@ -46,7 +41,6 @@ while True:
             x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
             x.add_row([i, data["nim"], data["nama"], data["tugas"], data["uts"], data["uas"], data["akhir"]])
         print(x)
-        print(daftar)
     elif tanya == "U":
         print("EDIT FILE")
         print("Data siapa yang akan diubah ?")
@@ -56,13 +50,83 @@ while True:
         mhs = input(" 1. Nama \n 2. Nilai Tugas \n 3. Nilai UTS \n 4. Nilai UAS\n Pilih dengan angka (1/2/3/4) : ")
         if mhs == "1":
             ubahnama = input("Silahkan masukan nama yang benar : ")
+            i = 0
+            d = next(item for item in daftar if item['nim'] == siapa)
+            d['nama'] = ubahnama
+            x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
+            i += 1
+            x.add_row([i, d["nim"], d["nama"], d["tugas"], d["uts"], d["uas"], d["akhir"]])
+            print(x)
+        elif mhs == "2":
+            ubahtugas = input("Masukkan Nilai Tugas yang benar : ")
+            i = 0
+            d = next(item for item in daftar if item['nim'] == siapa)
+            d['tugas'] = ubahtugas
+            lihatuts = d['uts']
+            lihatuas = d['uas']
+            lihatakhir = 0.3 * float(ubahtugas) + 0.35 * float(lihatuts) + 0.35 * float(lihatuas)
+            d['akhir'] = lihatakhir
+            x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
             for data in daftar:
-                data[mhs] = ubahnama
-                print(data.items())
+                i += 1
+                x.add_row([i, data["nim"], data["nama"], data["tugas"], data["uts"], data["uas"], data["akhir"]])
+            print(x)
+        elif mhs == "3":
+            ubahuts = input("Masukkan Nilai UTS yang benar : ")
+            i = 0
+            d = next(item for item in daftar if item['nim'] == siapa)
+            d['uts'] = ubahuts
+            lihattugas = d['tugas']
+            lihatuas = d['uas']
+            lihatakhir = 0.3 * float(lihattugas) + 0.35 * float(ubahuts) + 0.35 * float(lihatuas)
+            d['akhir'] = lihatakhir
+            x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
+            for data in daftar:
+                i += 1
+                x.add_row([i, data["nim"], data["nama"], data["tugas"], data["uts"], data["uas"], data["akhir"]])
+            print(x)
+        elif mhs == "4":
+            ubahuas = input("Masukkan Nilai UAS yang benar : ")
+            i = 0
+            d = next(item for item in daftar if item['nim'] == siapa)
+            d['uas'] = ubahuas
+            lihattugas = d['tugas']
+            lihatuts = d['uts']
+            lihatakhir = 0.3 * float(lihattugas) + 0.35 * float(lihatuts) + 0.35 * float(ubahuas)
+            d['akhir'] = lihatakhir
+            x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
+            for data in daftar:
+                i += 1
+                x.add_row([i, data["nim"], data["nama"], data["tugas"], data["uts"], data["uas"], data["akhir"]])
+            print(x)
         else:
-            print("Data kosong")
+            print("PILIHAN SALAH")
 
+    elif tanya == "C":
+        print(" ========== PENCARIAN DATA ==========")
+        cari = input(" Pencarian berdasarkan NIM :")
+        carinim = input("Masukkan NIM yang akan dicari : ")
+        xdata = next(item for item in daftar if item['nim'] == carinim)
+        print("NIM : ", carinim)
+        print("Nama : ", xdata['nama'])
+        print("Nilai Tugas : ", xdata['tugas'])
+        print("Nilai UTS : ", xdata['uts'])
+        print("Nilai UAS : ", xdata['uas'])
+        print("Nilai Akhir : ", xdata['akhir'])
     elif tanya == "H":
-        print("HAPUS DATA")
+        print("HAPUS DATA BERDASARKAN NIM")
+        datahapus = input("Masukkan NIM data yang akan dihapus : ")
+        xhapus = next(item for item in daftar if item['nim'] == datahapus)
+        del xhapus['nim']
+        del xhapus['nama']
+        del xhapus['tugas']
+        del xhapus['uts']
+        del xhapus['uas']
+        del xhapus['akhir']
+        print("Data Berhasil Dihapus")
+
+    elif tanya == "K":
+        print("ANDA KELUAR DARI APLIKASI")
+        break
     else:
         print("ANDA MEMILIH PILIHAN YANG SALAH")
