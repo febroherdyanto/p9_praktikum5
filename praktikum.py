@@ -104,7 +104,7 @@ while True:
 
     elif tanya == "C":
         print(" ========== PENCARIAN DATA ==========")
-        cari = input(" Pencarian berdasarkan NIM :")
+        print(" Pencarian berdasarkan NIM ")
         carinim = input("Masukkan NIM yang akan dicari : ")
         xdata = next(item for item in daftar if item['nim'] == carinim)
         print("NIM : ", carinim)

@@ -223,4 +223,42 @@ Dalam fitur ini terdapat 2 output, system akan memunculkan seperti berikut, jika
 Sedang kan output berikutnya akan menampilkan data dalam bentuk table<br>
 ![Lihat Data](pict/lihat-data.PNG)<br>
 
-* 
+* **Fitur Ubah Data**<br>
+Fitur ini akan muncul ketika user mengetikan perintah **U**<br>
+![Pilihan Ubah Data](pict/ubah-1.PNG)<br>
+Sistem akan menampilkan pertanyaan untuk memastikan data siapa yang akan diubah.<br>
+User akan diminta untuk memasukkan NIM, fitur ini akan mengubah berdasarkan NIM<br><br>
+Setelah user mamasukkan NIM yang akan diubah, maka sistem akan menampilkan pertanyaan berupa *Data apa yang akan diubah*<br>
+![Pilihan Ubah](pict/ubah-2.PNG)<br>
+Dalam system tersebut terdapat pilihan untuk mengubah Nama, Nilai Tugas, Nilai UTS, Nilai UAS. Bisa dipilih berdasarkan angka pilihan<br>
+*Berikut contoh saya untuk mengubah data Nama*<br>
+![Ubah Nama](pict/ubah-3-nama.PNG)<br>
+*Berikut contoh saya untuk mengubah nilai Tugas*<br>
+![Ubah Nilai Tugas](pict/ubah-4-tugas.PNG)<br>
+*Berikut contoh saya untuk mengubah Nilai UTS*<br>
+![Ubah Nila UTS](pict/ubah-5-uts.PNG)<br>
+*Berikut contoh saya untuk mengubah Nilai UAS*<br>
+![Ubah Nilai UAS](pict/ubah-6-uas.PNG)<br>
+Pada perubahan nilai, nilai akhir otomatis akan ikut berubah<br>
+
+* **Fitur Pencarian Data**<br>
+Fitur ini akan muncul ketika user mengetikan perintah **C**<br>
+Untuk menampilkan data lain, saya akan menambahkan data baru bernama Rangga<br>
+![Tambah data Rangga](pict/tambahdata-rangga.PNG)<br>
+Ketika data rangga sudah diinputkan, maka fitur cari siap digunakan. Seperti fitur-fitur lainnya, program ini menggunakan data primary key NIM.<br>
+Jadi fitur cari juga akan menampilkan data berdasarkan NIM. Seperti contoh dibawah ini :<br>
+![Fitur Cari](pict/cari-data.PNG)<br>
+
+* **Fitur Hapus Data**<br>
+Fitur ini akan muncul ketika user mengetikkan perintah **H**<br>
+Seperti ini hasil yang akan ditampilkan :<br>
+![Hapus Data](pict/hapus-data.PNG)<br>
+
+* **Fitur Keluar Program**<br>
+Fitur ini akan muncul ketika user mengetikkan perintah **K**<br>
+Seperti ini hasil yang akan ditampilkan<br>
+![Keluar Program](pict/keluar.PNG)<br>
+<hr>
+
+Seperti itulah hasil dari tugas yang diberkan oleh dosen<br>
+Febro Herdyanto / 312010043 / TI.20.B.1 / Bahasa Pemrograman
