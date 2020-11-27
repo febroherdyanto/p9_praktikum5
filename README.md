@@ -178,7 +178,7 @@ while True:
 
     elif tanya == "C":
         print(" ========== PENCARIAN DATA ==========")
-        cari = input(" Pencarian berdasarkan NIM :")
+        print(" Pencarian berdasarkan NIM ")
         carinim = input("Masukkan NIM yang akan dicari : ")
         xdata = next(item for item in daftar if item['nim'] == carinim)
         print("NIM : ", carinim)
@@ -198,12 +198,23 @@ while True:
         del xhapus['uas']
         del xhapus['akhir']
         print("Data Berhasil Dihapus")
+        no = 0
+        no += 1
+        x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
+        if not daftar:
+            x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
+            print(" D A T A  K O S O N G")
+        else:
+            for data in daftar:
+                x.add_row([no, data["nim"], data["nama"], data["tugas"], data["uts"], data["uas"], data["akhir"]])
+            print(x)
 
     elif tanya == "K":
         print("ANDA KELUAR DARI APLIKASI")
         break
     else:
         print("ANDA MEMILIH PILIHAN YANG SALAH")
+
 ```
 
 * Cukup banyak baris yang saya buat untuk program tersebut. Dan saya akan menjelaskan sedikit pengertian dari fitur-fitur yang ada di program tersebut.<br>
