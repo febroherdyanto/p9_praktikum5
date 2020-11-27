@@ -124,6 +124,16 @@ while True:
         del xhapus['uas']
         del xhapus['akhir']
         print("Data Berhasil Dihapus")
+        no = 0
+        no += 1
+        x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
+        if not daftar:
+            x.field_names = ["No", "NIM", " NAMA", "TUGAS", "UTS", "UAS", "AKHIR"]
+            print(" D A T A  K O S O N G")
+        else:
+            for data in daftar:
+                x.add_row([no, data["nim"], data["nama"], data["tugas"], data["uts"], data["uas"], data["akhir"]])
+            print(x)
 
     elif tanya == "K":
         print("ANDA KELUAR DARI APLIKASI")
